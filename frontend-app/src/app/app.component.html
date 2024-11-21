@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <span id="header-margin"><img src="../assets/images/star-wars-logo-svgrepo-com.svg" alt="" width="166px" height="76px"></span>
+  <div class="navlinks">
+    @for(link of navlinks; track link.name){
+    <div class="navlink" [routerLink]="link.url">{{ link.name }}</div>
+    }
+  </div>
+  <mat-form-field id="search-box">
+    <mat-icon id="search-icon">search</mat-icon>
+    <input id="search-text" matInput placeholder="Search">
+  </mat-form-field>
+</mat-toolbar>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

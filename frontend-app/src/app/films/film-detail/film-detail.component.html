@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="title center">
+        <p>Filmdetails</p>
+    </div>
+    <hr class="underline center">
+
+    <ng-container></ng-container>
+    @if(selectedFilm){
+    <div class="film-title center">
+        <p>{{selectedFilm.title}}</p>
+    </div>
+    <div class="title center">
+        <p>Episode {{selectedFilm.episode_id}}</p>
+    </div>
+    }
+</div>
+
+<!-- film details section -->
+@if(selectedFilm){
+<div class="detailcontainer">
+    <div class="detailcolumn">
+        <p id="details" class="spacer">Details:</p>
+        <p class="bold spacer">Director: <span class="litefont">{{selectedFilm.director}}</span>
+        </p>
+        <p class="bold spacer">Producers: <span class="litefont">{{selectedFilm.producer}}</span>
+        </p>
+        <p class="bold spacer">Release Date: <span class="litefont">{{selectedFilm.release_date | date:'dd.MM.yyyy'}}</span></p>
+        <br>
+        <p style="font-size: 18px;">{{selectedFilm.opening_crawl}}</p>
+        <div><br></div>
+        <!--  characters -->
+        @if(characters){
+        <p class="bold">Characters:</p>
+        @for (character of characters; track $index) {
+        <button mat-stroked-button (click)="this.characterService.navigateToCharacter(character.url.split('/').reverse()[1])" style="color: black;">{{character.name}}</button>
+        }
+        @if(selectedFilm.characters.length > 3){
+        <button mat-stroked-button style="color: black;">...</button>
+        }
+        }
+        <div><br></div>
+        <!--  planets -->
+        @if(planets){
+        <p class="bold">Planets:</p>
+        @for (planet of planets; track $index) {
+        <button mat-stroked-button (click)="this.planetService.navigateToPlanet(planet.url.split('/').reverse()[1])" style="color: black;">{{planet.name}}</button>
+        }
+        @if(selectedFilm.planets.length > 3){
+        <button mat-stroked-button style="color: black;">...</button>
+        }
+        }
+        <div><br></div>
+        <!--  starships -->
+        @if(starships){
+        <p class="bold">Starships:</p>
+        @for (starship of starships; track $index) {
+        <button mat-stroked-button style="color: black;">{{starship.name}}</button>
+        }
+        @if(selectedFilm.starships.length > 3){
+        <button mat-stroked-button style="color: black;">...</button>
+        }
+        }
+        <div><br></div>
+        <!--  vehicles -->
+        @if(vehicles){
+        <p class="bold">Vehicles:</p>
+        @for (vehicle of vehicles; track $index) {
+        <button mat-stroked-button style="color: black;">{{vehicle.name}}</button>
+        }
+        @if(selectedFilm.vehicles.length>3){
+        <button mat-stroked-button style="color: black;">...</button>
+        }
+        }
+
+    </div>
+
+    <div><img src="../../../assets/images/5.png" alt="" class="responsive-image"></div>
+</div>
+}
+
+
+@else {
+    <div class="loading"><mat-spinner></mat-spinner></div>
+}

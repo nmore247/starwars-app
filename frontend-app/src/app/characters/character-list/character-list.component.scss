@@ -1,0 +1,54 @@
+@import "../../../styles.scss";
+
+.loading {
+    @include div-center
+}
+
+.container {
+    @include responsive-container
+}
+
+.film-card {
+    @include custom-card
+}
+
+.card-header {
+    @include custom-card-header
+}
+
+img {
+    @include custom-card-img
+}
+
+.title {
+   @include custom-title
+}
+
+.info {
+   @include card-info
+}
+
+.detail {
+    @include card-detail
+}
+
+@media (max-width: 1366px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px;
+    }
+}
+
+@media (max-width: 960px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 32px;
+    }
+}
